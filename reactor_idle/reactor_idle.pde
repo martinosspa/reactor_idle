@@ -6,7 +6,6 @@ int placeSubType = 0;
 int tapTime = 0;
 float balance = 10;
 
-
 float totalCapacity = 0;
 float baseMaxCapacity = 1000;
 float totalMaxCapacity;
