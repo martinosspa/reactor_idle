@@ -4,10 +4,8 @@ class ComponentStorage extends Component {
     this.x = x;
     this.y = y;
   }
-  
-  
+
+
   void tick() {
-    
-    
   }
 }

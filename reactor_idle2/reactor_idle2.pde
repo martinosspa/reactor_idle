@@ -1,38 +1,56 @@
 float gridSizeX;
 float gridSizeY;
+
+PFont font;
+ActionHandler action_handler = new ActionHandler();
+SpriteHandler sprite_handler = new SpriteHandler();
+Toolbar toolbar = new Toolbar();
+Player player = new Player();
+//Renderer text_balance = new Renderer();
+Data data = new Data();
 PVector aspect_ratio = new PVector(16, 9);
-float balance = 0;
-Component testing_comp = new ComponentGenerator(1, 1, 1);
-Renderer toolbar = new Renderer();
+int FRAMERATE = 100;
+
+int selected_component = 1;
+Grid grid = new Grid(aspect_ratio.x*2, aspect_ratio.y*2);
+
 
 
 void setup() {
   size(1280, 720);
   //fullScreen();
+  
+  font = createFont("Arial", 16);
+  textFont(font);
   surface.setResizable(true);
+  frameRate(FRAMERATE);
+  update_global_values();
+  toolbar._setup();
 
-  toolbar.set_coords(new PVector(0, 0));
-  toolbar.set_dimensions(new PVector(width, height/(aspect_ratio.y/1)));
-  toolbar.set_color(color(110));
-  toolbar.set_corner_radius(3, 10);
-  toolbar.set_corner_radius(4, 10);
-
-  // temporary
-  testing_comp.set_image(loadImage("wind_turbine.png"));
+  for (int i = 0; i < 32; i++) {
+    for (int j = 0; j < 18; j++) {
+      grid.set_component(new GridPosition(i, j));
+    }
+  }
+  println("setup finished");
 }
 
 
 
 void draw() {
-  set_global_values();
+  update_global_values();
+  //println(player.moneyPerSecond);
+  background(170);
   render_grid();
   toolbar.render();
+
+  action_handler.tick();
   beginShape();
-  translate(0, toolbar.height);
+  translate(0, toolbar._height);
+  grid.render();
 
-
-  //temporary
-  testing_comp.tick();
-  testing_comp.render();
+  if (frameCount % FRAMERATE == 0) {
+    grid.tick();
+  }
   endShape();
 }

@@ -1,6 +1,6 @@
 class Renderer {
-  float height;
-  float width;
+  float _height;
+  float _width;
   private float x;
   private float y;
   private color _color;
@@ -12,17 +12,24 @@ class Renderer {
   private PImage image;
   private boolean has_image = false;
   private boolean is_button = false;
+  private boolean has_text = false;
+  private String text;
+
+
   void set_coords(PVector coords) {
     x = coords.x;
     y = coords.y;
   }
+
   void set_dimensions(PVector dimensions) {
-    this.width = dimensions.x-1;
-    this.height = dimensions.y-1;
+    _width = dimensions.x-1;
+    _height = dimensions.y-1;
   }
+
   void set_color(color c) {
     _color = c;
   }
+
   void set_corner_radius(int corner, float radius) {
     switch(corner) {
     case 1:
@@ -45,6 +52,7 @@ class Renderer {
       break;
     }
   }
+
   void set_outline(color c) {
     outlines = c;
   }
@@ -58,23 +66,35 @@ class Renderer {
     is_button = true;
   }
 
+  void is_text() {
+    has_text = true;
+  }
+
+  void update_text(String str) {
+    text = str;
+  }
+
   boolean is_pressed() {
-    return (x < mouseX && mouseX < x+this.width) &&
-      (y < mouseY && mouseY < y+this.height);
+    return (x < mouseX && mouseX < x+_width) &&
+      (y < mouseY && mouseY < y+_height);
   }
 
 
   void render() {
     if (has_image) {
-      image(image, x, y, this.width, this.height);
+      image(image, x, y, _width, _height);
     } else {
       if (!( _color == 0)) {
+        stroke(_color);
         fill(_color);
       }
+
       stroke(outlines);
-      rect(x, y, this.width, this.height, 
-        radius_corner1, radius_corner2, 
-        radius_corner3, radius_corner4);
+      rect(x, y, _width, _height, radius_corner1, radius_corner2, radius_corner3, radius_corner4);
+      if (has_text) {
+        textAlign(CENTER, CENTER);
+        text(text, x, y);
+      }
     }
   }
 }

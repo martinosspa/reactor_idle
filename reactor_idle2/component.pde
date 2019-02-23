@@ -1,6 +1,7 @@
 class Component {
   int x, y, price;
   PImage image;
+  boolean alive = true;
 
 
 
@@ -15,6 +16,24 @@ class Component {
   }
 
   void render() {
-    image(image, x*gridSizeX, y*gridSizeY, gridSizeX, gridSizeY);
+    if (image != null) {
+      image(image, x*gridSizeX, y*gridSizeY, gridSizeX, gridSizeY);
+    }
+  }
+
+  void tick() {
+  }
+
+  boolean alive() {
+    return alive;
+  }
+  
+  void place() {
+    // action processed only when firstly placed
+    
+    
+  
+    
+    
   }
 }

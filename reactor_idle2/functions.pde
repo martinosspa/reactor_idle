@@ -1,5 +1,7 @@
 void render_grid() {
-  for (float i = height; i > toolbar.height; i -= gridSizeY) {
+
+  stroke(0);
+  for (float i = height; i > toolbar._height; i -= gridSizeY) {
     line(0, i, width, i);
   }  
 
@@ -8,7 +10,15 @@ void render_grid() {
   }
 }
 
-void set_global_values() {
+void update_global_values() {
   gridSizeX = width / (aspect_ratio.x*2);
-  gridSizeY = (height - toolbar.height) / (aspect_ratio.y * 2);
+  gridSizeY = (height - toolbar._height) / (aspect_ratio.y * 2);
+  
+  
+  toolbar.text_balance.set_coords(new PVector(gridSizeX, gridSizeY));
+  toolbar.text_balance.update_text("Balance: " + player.balance);
+}
+
+void render_toolbar() {
+  toolbar.render();
 }
