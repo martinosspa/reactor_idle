@@ -1,4 +1,4 @@
-class GuiButton extends GuiComponent {
+class GuiButton extends GuiComponent{
   float _width;
   float _height;
   GuiButton(float x, float y) {

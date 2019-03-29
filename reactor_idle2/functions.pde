@@ -26,8 +26,17 @@ void setupToolbar() {
   toolbar.setCornerRadius(3, 10);
   toolbar.setCornerRadius(4, 10);
 
-
-  GuiText t = new GuiText(50, 50);
-  t.setText("Test");
+  
+  // balance text
+  GuiText t = new GuiText(0, 16);
+  //t.setText("Test" + player.balance);
+  t.setCode(1);
   toolbar.addComponent(t);
+  
+  t = new GuiText(0, 32);
+  t.setCode(2);
+  toolbar.addComponent(t);
+  
+  
+  
 }

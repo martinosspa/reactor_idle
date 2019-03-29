@@ -9,6 +9,7 @@ class Window {
   private float radius_corner3;
   private float radius_corner4;
   private color outlines;
+  private String[] textForComponents;
 
   ArrayList<GuiComponent> components = new ArrayList<GuiComponent>();
 
@@ -67,5 +68,9 @@ class Window {
       g.render();
     }
     popMatrix();
+  }
+
+  void updateData() {
+    textForComponents[0] = str(player.balance);
   }
 }

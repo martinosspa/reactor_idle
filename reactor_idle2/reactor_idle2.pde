@@ -7,7 +7,7 @@ SpriteHandler sprite_handler = new SpriteHandler();
 Window toolbar;
 Player player = new Player();
 //Renderer text_balance = new Renderer();
-Data data = new Data();
+
 PVector aspect_ratio = new PVector(16, 9);
 
 int FRAMERATE = 100;
@@ -43,6 +43,7 @@ void draw() {
   update_global_values();
   //println(player.moneyPerSecond);
   background(170);
+
   render_grid();
   toolbar.render();
 
@@ -53,7 +54,7 @@ void draw() {
 
   if (frameCount % FRAMERATE == 0) {
     grid.tick();
+    player.updateBalance();
   }
   endShape();
-  
 }

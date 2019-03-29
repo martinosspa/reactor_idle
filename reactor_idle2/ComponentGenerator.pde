@@ -1,4 +1,4 @@
-class ComponentGenerator extends Component {
+class ComponentGenerator extends Component implements ComponentData {
   int type;
   boolean alive = true;
   float generationPerSecond;
@@ -9,13 +9,13 @@ class ComponentGenerator extends Component {
     this.x = x;
     this.y = y;
     this.type = type;
-    lifetimeMax = data.componentLifetime[type];
+    lifetimeMax = ComponentData.componentLifetime[type];
     lifetimeCurrent = lifetimeMax;
 
 
     switch(type) {
     case 1:
-      generationPerSecond = data.generate_amount[type];
+      generationPerSecond = ComponentData.generate_amount[type];
       break;
     }
   }
@@ -44,8 +44,10 @@ class ComponentGenerator extends Component {
   }
 
   void tick() {
-    if (lifetimeCurrent <= 0) {
+    if (lifetimeCurrent <= 0 || !alive) {
       alive = false;
+      player.removeMoneyPerSecond(generationPerSecond);
+      
     } else { 
       lifetimeCurrent--;
     }
@@ -54,5 +56,6 @@ class ComponentGenerator extends Component {
 
   void place() {
     player.addMoneyPerSecond(generationPerSecond);
+    println("added + " + generationPerSecond);
   }
 }

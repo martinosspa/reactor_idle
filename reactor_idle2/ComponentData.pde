@@ -1,5 +1,5 @@
-class Data {
+interface ComponentData {
   float[] componentPrices = {0, 1};
   int[] componentLifetime = {0, 10};
-  float[] generate_amount = {0, 0.2};
+  float[] generate_amount = {0, 0.2f};
 }
