@@ -27,13 +27,8 @@ class Component {
   boolean alive() {
     return alive;
   }
-  
+
   void place() {
     // action processed only when firstly placed
-    
-    
-  
-    
-    
   }
 }

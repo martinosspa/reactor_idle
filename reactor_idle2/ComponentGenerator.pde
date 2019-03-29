@@ -50,8 +50,8 @@ class ComponentGenerator extends Component {
       lifetimeCurrent--;
     }
   }
-  
-  
+
+
   void place() {
     player.addMoneyPerSecond(generationPerSecond);
   }

@@ -13,12 +13,21 @@ void render_grid() {
 void update_global_values() {
   gridSizeX = width / (aspect_ratio.x*2);
   gridSizeY = (height - toolbar._height) / (aspect_ratio.y * 2);
-  
-  
-  toolbar.text_balance.set_coords(new PVector(gridSizeX, gridSizeY));
-  toolbar.text_balance.update_text("Balance: " + player.balance);
+
+
+  //toolbar.text_balance.set_coords(new PVector(gridSizeX, gridSizeY));
+  //toolbar.text_balance.update_text("Balance: " + player.balance);
 }
 
-void render_toolbar() {
-  toolbar.render();
+void setupToolbar() {
+
+  toolbar = new Window(0, 0, width, height/(aspect_ratio.y));
+  toolbar.set_color(color(100));
+  toolbar.setCornerRadius(3, 10);
+  toolbar.setCornerRadius(4, 10);
+
+
+  GuiText t = new GuiText(50, 50);
+  t.setText("Test");
+  toolbar.addComponent(t);
 }
