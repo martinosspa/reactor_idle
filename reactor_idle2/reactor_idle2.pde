@@ -18,16 +18,19 @@ Grid grid = new Grid(aspect_ratio.x*2, aspect_ratio.y*2);
 
 
 void setup() {
-  size(1280, 720);
-  font = createFont("Arial", 16);
+  //size(1280, 720);
+  fullScreen();
+
   orientation(LANDSCAPE);
-  textFont(font);
+
   frameRate(FRAMERATE);
 
   setupToolbar();
 
   update_global_values();
 
+  font = createFont("Arial", gridSizeY/2);
+  textFont(font);
 
   for (int i = 0; i < 32; i++) {
     for (int j = 0; j < 18; j++) {

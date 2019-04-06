@@ -13,12 +13,12 @@ class GuiText extends GuiComponent {
 
   void render() {
     switch (code) {
-      case 1:
-        this.text = "Balance: " + player.balance;
-        break;
-      case 2: 
-        this.text = "Money per second: "+ player.moneyPerSecond;
-        break;
+    case 1:
+      this.text = "Balance: " + nf(player.balance, 0, 1);
+      break;
+    case 2: 
+      this.text = "Money per second: "+ nf(player.moneyPerSecond, 0, 1);
+      break;
     }
     stroke(0);
     fill(255, 0, 0);

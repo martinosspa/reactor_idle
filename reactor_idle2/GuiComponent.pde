@@ -15,10 +15,9 @@ class GuiComponent {
   void setParentWindow(Window w) {
     parentWindow = w;
   }
-  
-  
+
+
   void update() {
     //place holder
-    
   }
 }

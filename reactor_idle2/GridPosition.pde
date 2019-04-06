@@ -15,10 +15,16 @@ class GridPosition {
     if (taken) {
       return true;
     } else {
-      taken = true;
-      component = comp;
-      component.place();
-      return false;
+      if (comp.buyable()) {
+
+        taken = true;
+        component = comp;
+        component.place();
+        return false;
+      } else {
+        println("low balance");
+        return true;
+      }
     }
   }
 

@@ -1,5 +1,5 @@
 class Player {
-  float balance = 0;
+  float balance = 1;
   float moneyPerSecond = 0;
 
   void addMoneyPerSecond(float f) {
@@ -14,9 +14,9 @@ class Player {
 
   void removeMoneyPerSecond(float f) {
     if (moneyPerSecond - f > 0) {
-      moneyPerSecond = 0;
-    } else {
       moneyPerSecond -= f;
+    } else {
+      moneyPerSecond = 0;
     }
   }
 }

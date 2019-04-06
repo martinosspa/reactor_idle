@@ -15,8 +15,11 @@ class ActionHandler {
     }
     if (mousePressed && mouseInGrid()) {
       if (!grid.gridComponents[mouseGridX][mouseGridY].taken) {
-        grid.gridComponents[mouseGridX][mouseGridY].place_component(new ComponentGenerator(mouseGridX, mouseGridY, 1));
-        grid.gridComponents[mouseGridX][mouseGridY].component.set_image(sprite_handler.get_image(selected_component));
+        ComponentGenerator c = new ComponentGenerator(mouseGridX, mouseGridY, 1);
+        if (c.buyable()) {
+          grid.gridComponents[mouseGridX][mouseGridY].place_component(c);
+          grid.gridComponents[mouseGridX][mouseGridY].component.set_image(sprite_handler.get_image(selected_component));
+        }
         //println("placed a component at " + mouseGridX + " "+ mouseGridY);
       } else if (!grid.gridComponents[mouseGridX][mouseGridY].alive()) {
       }

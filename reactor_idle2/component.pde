@@ -1,6 +1,7 @@
 class Component {
   int x, y, price;
   PImage image;
+  float cost = 0;
   boolean alive = true;
 
 
@@ -30,5 +31,10 @@ class Component {
 
   void place() {
     // action processed only when firstly placed
+    // placeholder
+  }
+
+  boolean buyable() {
+    return player.balance - cost >= 0;
   }
 }
